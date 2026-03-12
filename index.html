@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect — First Presbyterian Church</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #4a4a4a;
+    background: #f7f5f2;
+    min-height: 100vh;
+  }
+
+  /* ── Header ─────────────────────────────── */
+  .header {
+    background: #3d1f5c;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+  .header h1 {
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin-bottom: 0.2rem;
+  }
+  .header p {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #e8e4de;
+    letter-spacing: 0.05em;
+  }
+  .header .gold-line {
+    width: 3rem;
+    height: 2px;
+    background: #c9a959;
+    margin: 0.6rem auto;
+  }
+
+  /* ── Card ────────────────────────────────── */
+  .card {
+    background: #fff;
+    max-width: 480px;
+    margin: -1.5rem auto 2rem auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 1.8rem 1.5rem;
+    position: relative;
+  }
+
+  .card h2 {
+    font-size: 1.15rem;
+    color: #1a3a5c;
+    margin-bottom: 0.15rem;
+  }
+  .card .section-sub {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #8a8a8a;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid #c9a959;
+    margin: 1.3rem 0;
+  }
+
+  /* ── Form ────────────────────────────────── */
+  label {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: #1a3a5c;
+    margin-bottom: 0.25rem;
+    margin-top: 0.8rem;
+  }
+  label:first-of-type {
+    margin-top: 0;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #faf9f7;
+    color: #4a4a4a;
+    transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #c9a959;
+    box-shadow: 0 0 0 2px rgba(201, 169, 89, 0.15);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  /* ── Checkboxes ─────────────────────────── */
+  .checkbox-group {
+    margin-top: 0.6rem;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #4a4a4a;
+  }
+  .checkbox-row input[type="checkbox"] {
+    margin-top: 0.15rem;
+    accent-color: #3d1f5c;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .checkbox-row .sub-desc {
+    font-size: 0.78rem;
+    color: #8a8a8a;
+    line-height: 1.35;
+    margin-top: 0.1rem;
+  }
+
+  /* ── Other field ────────────────────────── */
+  .other-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .other-wrapper input[type="checkbox"] {
+    accent-color: #3d1f5c;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .other-wrapper input[type="text"] {
+    flex: 1;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  /* ── Submit ─────────────────────────────── */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.3rem;
+    padding: 0.75rem 2rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #fff;
+    background: #c9a959;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover {
+    background: #b8963e;
+  }
+
+  /* ── Success ────────────────────────────── */
+  .success-message {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .success-message h2 {
+    color: #3d1f5c;
+    margin-bottom: 0.5rem;
+  }
+  .success-message p {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #6a6a6a;
+  }
+
+  /* ── Footer ─────────────────────────────── */
+  .footer {
+    text-align: center;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    color: #8a8a8a;
+  }
+  .footer a {
+    color: #3d1f5c;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>First Presbyterian Church</h1>
+  <div class="gold-line"></div>
+  <p>CONNECT WITH US</p>
+</div>
+
+<div class="card">
+  <form id="connect-form" name="connect" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="connect">
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+    <!-- Contact Info -->
+    <h2>Your Information</h2>
+    <p class="section-sub">Let us know how to reach you</p>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email">
+
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone">
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address">
+
+    <label for="city-state-zip">City, State/Zip</label>
+    <input type="text" id="city-state-zip" name="city-state-zip">
+
+    <div class="checkbox-group" style="margin-top:1rem;">
+      <div class="checkbox-row">
+        <input type="checkbox" id="new-here" name="new-here" value="yes">
+        <label for="new-here" style="margin:0; font-weight:normal;">I'm new here!</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="update-info" name="update-info" value="yes">
+        <label for="update-info" style="margin:0; font-weight:normal;">Update my info</label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Next Steps -->
+    <h2>My Next Steps</h2>
+    <p class="section-sub">How can we help you grow?</p>
+
+    <div class="checkbox-group">
+      <div class="checkbox-row">
+        <input type="checkbox" id="decision" name="decision" value="yes">
+        <label for="decision" style="margin:0; font-weight:normal;">I've made a decision to follow Christ</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="dgroup" name="dgroup" value="yes">
+        <div>
+          <label for="dgroup" style="margin:0; font-weight:normal;">I want to be in a "dGroup"</label>
+          <p class="sub-desc">A small, same gender group led by a trained disciple maker, to encourage one another in becoming a disciple of Christ.</p>
+        </div>
+      </div>
+    </div>
+
+    <label style="margin-top:0.8rem; font-weight:normal; font-style:italic; color:#4a4a4a;">I want to learn about:</label>
+    <div class="checkbox-group">
+      <div class="checkbox-row">
+        <input type="checkbox" id="membership" name="learn-about" value="Becoming a member of FPC">
+        <label for="membership" style="margin:0; font-weight:normal;">Becoming a member of FPC</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="sunday-school" name="learn-about" value="Sunday School opportunities">
+        <label for="sunday-school" style="margin:0; font-weight:normal;">Sunday School opportunities</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="missions" name="learn-about" value="Mission Trips">
+        <label for="missions" style="margin:0; font-weight:normal;">Mission Trips</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="serving" name="learn-about" value="Serving in the community">
+        <label for="serving" style="margin:0; font-weight:normal;">Serving in the community</label>
+      </div>
+      <div class="other-wrapper">
+        <input type="checkbox" id="other-check" name="learn-about" value="Other">
+        <label for="other-check" style="display:none;">Other</label>
+        <input type="text" id="other-text" name="other-detail" placeholder="Other...">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Prayer -->
+    <h2>How May We Pray for You?</h2>
+    <p class="section-sub">Your prayer requests are shared with our prayer team</p>
+    <textarea id="prayer" name="prayer" placeholder="Share your prayer requests here..."></textarea>
+
+    <hr class="divider">
+
+    <!-- Feedback -->
+    <h2>My Feedback</h2>
+    <textarea id="feedback" name="feedback" placeholder="Any thoughts, questions, or feedback..."></textarea>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <div class="success-message" id="success">
+    <h2>Thank You!</h2>
+    <p>We've received your connection card.<br>A member of our team will be in touch soon.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>First Presbyterian Church &middot; 919 East Shiloh Road &middot; Corinth, MS 38834</p>
+  <p style="margin-top:0.3rem;"><a href="https://fpccorinth.com">fpccorinth.com</a> &middot; 662-286-6424</p>
+</div>
+
+<script>
+  const form = document.getElementById('connect-form');
+  const success = document.getElementById('success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>
